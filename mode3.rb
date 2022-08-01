@@ -14,8 +14,12 @@ module MonthHighestTemperatueChart
       lines.each_with_index do |line, i|
         max_temp = line.split(',')[max_temp_index].to_i
         min_temp = line.split(',')[min_temp_index].to_i
+        next if max_temp.is_zero?
+
         print "#{i} "
         print_highest_chart(max_temp)
+        next if min_temp.is_zero?
+
         print "#{i} "
         print_lowest_chart(min_temp)
       end
